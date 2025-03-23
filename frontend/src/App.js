@@ -16,8 +16,11 @@ function App() {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
+    // Use environment variable for the backend URL
+    const backendUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
+    
     // Establish WebSocket connection
-    const newSocket = io('http://localhost:5000', {
+    const newSocket = io(backendUrl, {
       transports: ['websocket'], // Ensure websocket for better performance
     });
     setSocket(newSocket);
