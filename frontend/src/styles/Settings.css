@@ -1,0 +1,148 @@
+/* Settings.css */
+.settings-page {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 20px;
+    box-sizing: border-box;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    text-align: center;
+    margin-bottom: 40px;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Settings Grid */
+.settings-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* Settings Card */
+.settings-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.settings-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+h2 {
+    font-size: 1.8rem;
+    color: #34495e;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Setting Group */
+.setting-group {
+    margin-bottom: 30px;
+}
+
+h3 {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
+
+/* Retrain Button */
+.retrain-btn {
+    background: #3498db;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: background 0.3s ease;
+}
+
+.retrain-btn:hover {
+    background: #2980b9;
+}
+
+.retrain-btn.loading {
+    background: #95a5a6;
+    cursor: not-allowed;
+}
+
+/* Input Settings */
+.input-setting select,
+input[type="number"] {
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #bdc3c7;
+}
+
+/* Checkbox Settings */
+.checkbox-setting {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Range Input */
+input[type="range"] {
+    width: 100%;
+    margin-top: 10px;
+}
+
+.range-labels {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+}
+
+/* Success & Error Messages */
+.result-message {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.success {
+    background: #2ecc71;
+    color: white;
+}
+
+.error {
+    background: #e74c3c;
+    color: white;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .page-title {
+        font-size: 2rem;
+    }
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease;
+}
+
+.delay-200 {
+    animation-delay: 0.2s;
+}
+
+.delay-400 {
+    animation-delay: 0.4s;
+}

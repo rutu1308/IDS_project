@@ -1,0 +1,189 @@
+/* Import Poppins Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+/* Global Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Root Variables */
+:root {
+  --primary-color: #3498db; /* Blue */
+  --dark-blue-gray: #2c3e50; /* Dark Text */
+  --background-gradient: linear-gradient(to bottom, #f9f9f9, #f5e3cb); /* Soft Gradient */
+}
+
+/* Body */
+body, html {
+  font-family: 'Poppins', sans-serif; /* Updated Font */
+  background: var(--background-gradient);
+  color: var(--dark-blue-gray);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Allows scrolling */
+  overflow-x: hidden; /* Disable horizontal scroll */
+}
+
+/* Main App Container */
+.app {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+/* Content Wrapper */
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  max-width: 1400px; /* Limit max width */
+}
+
+/* Dashboard Container */
+.dashboard {
+  padding: 40px 20px;
+  width: 100%;
+  animation: fadeIn 0.8s ease-in;
+}
+
+/* Dashboard Title */
+.dashboard h1 {
+  font-size: 3rem;
+  text-align: center;
+  margin: 40px 0 3rem;
+  font-weight: 600; /* Bold and modern look */
+  color: var(--dark-blue-gray);
+  animation: slideDown 0.8s ease-in-out;
+}
+
+/* Stats Container */
+.stats-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin-bottom: 50px;
+  width: 100%;
+  max-width: 1200px; /* Center content */
+}
+
+/* Stat Card */
+.stat-card {
+  background: white;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Stat Card Icon */
+.stat-card-icon {
+  font-size: 3rem;
+}
+
+/* Dashboard Row (for charts and graphs) */
+.dashboard-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+}
+
+/* Dashboard Card (for charts) */
+.dashboard-card {
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  padding: 40px;
+  width: 100%;
+  max-width: 1200px;
+  transition: transform 0.3s;
+}
+
+.dashboard-card:hover {
+  transform: scale(1.02);
+}
+
+/* Loading Spinner */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid var(--primary-color);
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: spin 1s linear infinite;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .dashboard h1 {
+    font-size: 2.5rem;
+  }
+
+  .dashboard-card {
+    padding: 30px;
+  }
+
+  .stat-card {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard h1 {
+    font-size: 2rem;
+  }
+
+  .dashboard-card {
+    padding: 20px;
+  }
+
+  .spinner {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard h1 {
+    font-size: 1.8rem;
+  }
+}

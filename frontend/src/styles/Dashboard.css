@@ -1,0 +1,578 @@
+/* Enhanced Dashboard.css */
+
+/* Dashboard Main Container */
+.dashboard {
+    padding: 80px 20px 40px;
+    background: var(--gradient-light);
+    min-height: 100vh;
+    animation: fadeIn 0.8s ease-in;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Background Pattern Overlay */
+.dashboard::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%239C92AC' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    opacity: 0.5;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Dashboard Content */
+.dashboard-content {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Dashboard Title */
+.dashboard h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--neutral-800);
+    text-align: center;
+    margin-bottom: 3rem;
+    animation: slideDown 0.8s ease-in-out;
+    position: relative;
+    display: inline-block;
+}
+
+.dashboard h1::after {
+    content: '';
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-sm);
+}
+
+/* Last Updated Info */
+.last-updated {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: var(--neutral-600);
+    gap: 8px;
+}
+
+.last-updated svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Stats Container */
+.stats-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-bottom: 50px;
+    width: 100%;
+    animation: slideUp 0.8s ease-out;
+}
+
+/* Stat Cards */
+.stat-card {
+    background: white;
+    box-shadow: var(--shadow-md);
+    border-radius: var(--radius-xl);
+    padding: 24px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    transition: all var(--transition-normal);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    position: relative;
+}
+
+/* Card Hover Effect */
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    border-color: rgba(0, 0, 0, 0);
+}
+
+/* Stat Card Hover Glow */
+.stat-card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(120deg,
+            rgba(255, 255, 255, 0) 30%,
+            rgba(255, 255, 255, 0.8) 50%,
+            rgba(255, 255, 255, 0) 70%);
+    transition: all 1.2s ease;
+    transform: translateX(-100%);
+    pointer-events: none;
+}
+
+.stat-card:hover::after {
+    transform: translateX(100%);
+}
+
+/* Stat Card Icon Container */
+.stat-card-icon {
+    font-size: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 70px;
+    height: 70px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, #e6f7ff, #bae7ff);
+    color: var(--primary-500);
+    flex-shrink: 0;
+    transition: all var(--transition-normal);
+}
+
+/* Different color schemes for different stat cards */
+.stat-card:nth-child(2) .stat-card-icon {
+    background: linear-gradient(135deg, #fff7e6, #ffe7ba);
+    color: var(--accent-orange);
+}
+
+.stat-card:nth-child(3) .stat-card-icon {
+    background: linear-gradient(135deg, #f6ffed, #d9f7be);
+    color: var(--accent-green);
+}
+
+.stat-card:nth-child(4) .stat-card-icon {
+    background: linear-gradient(135deg, #fff2f0, #ffccc7);
+    color: var(--accent-red);
+}
+
+/* Stat Card Content */
+.stat-card-content {
+    flex: 1;
+}
+
+.stat-card-title {
+    font-size: 1rem;
+    color: var(--neutral-600);
+    margin-bottom: 5px;
+}
+
+.stat-card-value {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--neutral-800);
+}
+
+.stat-card-delta {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.85rem;
+    margin-top: 5px;
+    padding: 3px 8px;
+    border-radius: 12px;
+    background: rgba(56, 161, 105, 0.1);
+    color: var(--accent-green);
+}
+
+.stat-card-delta.negative {
+    background: rgba(229, 62, 62, 0.1);
+    color: var(--accent-red);
+}
+
+/* Dashboard Row */
+.dashboard-row {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+/* Dashboard Card */
+.dashboard-card {
+    background: white;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    padding: 32px;
+    width: 100%;
+    transition: all var(--transition-normal);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    animation: fadeIn 0.8s ease-out;
+}
+
+.dashboard-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Card Header */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.card-title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--neutral-800);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-title svg {
+    width: 24px;
+    height: 24px;
+    color: var(--primary-500);
+}
+
+.card-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.card-actions button {
+    background: var(--neutral-100);
+    border: 1px solid var(--neutral-300);
+    border-radius: var(--radius-md);
+    padding: 6px 12px;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.card-actions button:hover {
+    background: var(--neutral-200);
+    border-color: var(--neutral-400);
+}
+
+.card-actions button svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Chart Container */
+.chart-container {
+    width: 100%;
+    height: 400px;
+    position: relative;
+}
+
+/* Error State */
+.error-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    text-align: center;
+    color: var(--accent-red);
+}
+
+.error-container svg {
+    width: 64px;
+    height: 64px;
+    margin-bottom: 16px;
+}
+
+.error-message {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.retry-button {
+    padding: 8px 16px;
+    background-color: var(--primary-500);
+    color: white;
+    border: none;
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background-color var(--transition-fast);
+}
+
+.retry-button:hover {
+    background-color: var(--primary-600);
+}
+
+/* Empty State */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px;
+    text-align: center;
+    color: var(--neutral-600);
+}
+
+.empty-state svg {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 24px;
+    color: var(--neutral-500);
+}
+
+.empty-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--neutral-700);
+}
+
+.empty-description {
+    font-size: 1rem;
+    max-width: 400px;
+    margin-bottom: 24px;
+}
+
+/* Dashboard Grid */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+/* Filters Section */
+.filters-section {
+    background: white;
+    border-radius: var(--radius-lg);
+    padding: 16px;
+    margin-bottom: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.filter-label {
+    font-weight: 500;
+    color: var(--neutral-700);
+    margin-right: 4px;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Dashboard footer */
+.dashboard-footer {
+    margin-top: auto;
+    padding: 24px 0;
+    text-align: center;
+    font-size: 0.875rem;
+    color: var(--neutral-500);
+    width: 100%;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 1024px) {
+    .dashboard h1 {
+        font-size: 2.75rem;
+    }
+
+    .stat-card {
+        padding: 20px;
+    }
+
+    .stat-card-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 2.25rem;
+    }
+
+    .dashboard-card {
+        padding: 24px;
+    }
+
+    .chart-container {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard {
+        padding: 60px 16px 32px;
+    }
+
+    .dashboard h1 {
+        font-size: 2.25rem;
+        margin-bottom: 2rem;
+    }
+
+    .dashboard h1::after {
+        width: 60px;
+        height: 3px;
+    }
+
+    .stats-container {
+        gap: 16px;
+    }
+
+    .stat-card {
+        gap: 16px;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+
+    .card-actions {
+        width: 100%;
+        justify-content: flex-end;
+    }
+
+    .chart-container {
+        height: 300px;
+    }
+
+    .filters-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    .dashboard h1 {
+        font-size: 1.85rem;
+    }
+
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 12px;
+    }
+
+    .stat-card-value {
+        font-size: 1.5rem;
+    }
+
+    .chart-container {
+        height: 250px;
+    }
+}
+
+/* Dark Mode Support */
+@media (prefers-color-scheme: dark) {
+    .dashboard {
+        background: var(--gradient-light);
+    }
+
+    .dashboard::before {
+        opacity: 0.2;
+    }
+
+    .dashboard h1 {
+        color: var(--neutral-100);
+    }
+
+    .stat-card,
+    .dashboard-card,
+    .filters-section {
+        background: var(--neutral-800);
+        border-color: rgba(255, 255, 255, 0.05);
+    }
+
+    .stat-card-title {
+        color: var(--neutral-400);
+    }
+
+    .stat-card-value,
+    .card-title {
+        color: var(--neutral-100);
+    }
+
+    .card-actions button {
+        background: var(--neutral-700);
+        border-color: var(--neutral-800);
+        color: var(--neutral-300);
+    }
+
+    .card-actions button:hover {
+        background: var(--neutral-600);
+    }
+
+    .last-updated {
+        color: var(--neutral-500);
+    }
+
+    .empty-title {
+        color: var(--neutral-300);
+    }
+
+    .filter-label {
+        color: var(--neutral-300);
+    }
+
+    /* Adjust glow effect for dark mode */
+    .stat-card::after {
+        background: linear-gradient(120deg,
+                rgba(255, 255, 255, 0) 30%,
+                rgba(255, 255, 255, 0.2) 50%,
+                rgba(255, 255, 255, 0) 70%);
+    }
+}
+
+/* Print Mode */
+@media print {
+    .dashboard {
+        background: white;
+        padding: 20px;
+    }
+
+    .dashboard::before {
+        display: none;
+    }
+
+    .card-actions,
+    .filters-section {
+        display: none;
+    }
+
+    .dashboard-card,
+    .stat-card {
+        break-inside: avoid;
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+
+    .dashboard h1::after {
+        display: none;
+    }
+}
