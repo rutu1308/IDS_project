@@ -1,4 +1,3 @@
-// src/App.js
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -16,11 +15,8 @@ function App() {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    // Use environment variable for the backend URL
-    const backendUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000';
-    
     // Establish WebSocket connection
-    const newSocket = io(backendUrl, {
+    const newSocket = io('http://localhost:5000', {
       transports: ['websocket'], // Ensure websocket for better performance
     });
     setSocket(newSocket);
